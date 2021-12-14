@@ -22,12 +22,18 @@ func Test1(list []string) string {
 	var result string
 
 	for _, l := range list {
-		go func() {
-			result += l + " "
-		}()
+		// go func() {
+		// 	result += l + " "
+		// }()
+		go sl(v)
 	}
 
 	return result
+}
+
+// Helper function for routines for prevent closure var exposures for start routines
+func sl(res ch, v string) {
+    result += l + " "
 }
 
 // Test2 создаёт файл во временной директории и записывает в него строку из data.
@@ -39,7 +45,8 @@ func Test1(list []string) string {
 // Пример вызова функции:
 //     err := Test2("test2.txt", "hello test2")
 func Test2(filename, data string) error {
-	f, err := os.Create("/tmp/" + filename)
+	FSEP := "/" // Unix only
+	f, err := os.Create("$TEMP"+ FSEP + filename)
 	if err != nil {
 		return err
 	}

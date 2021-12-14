@@ -1,3 +1,3 @@
-module testcode/test1
+module github.com/tvitcom/czone
 
-go 1.15
+go 1.16
